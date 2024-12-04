@@ -1,5 +1,7 @@
 import React from 'react'
 import Data from './Data'
+import { MdOutlineNoFood } from "react-icons/md";
+
 
 const Card = ({criteria}) => {
 
@@ -8,6 +10,14 @@ const Card = ({criteria}) => {
 
   return (
     <div>
+      {cuisineFilter.length === 0? 
+      <div>
+        <MdOutlineNoFood size={50} className='max-w-xl m-auto mt-16 text-gray-500'/>
+        <h2 className='flex justify-center mt-4 text-lg tracking-widest font-semibold text-gray-500'>
+          SORRY. NO FOOD ABILABLE
+        </h2>
+      </div>
+      :
       <div className='grid grid-cols-3 gap-10 mt-8'>
         {cuisineFilter.map(data => (
             <div>
@@ -19,6 +29,8 @@ const Card = ({criteria}) => {
         ))}
         
       </div>
+    }
+      
     </div>
   )
 }
