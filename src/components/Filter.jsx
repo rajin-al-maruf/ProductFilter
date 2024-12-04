@@ -1,45 +1,42 @@
-import React from 'react'
+import React, { useState } from 'react'
+import Category from './filters/Category'
+import Cuisine from './filters/Cuisine'
+import { CiFilter } from "react-icons/ci";
 
-const Filter = () => {
+const Filter = ({criteria, setCriteria}) => {
+
+
+  function handleChange(event) {
+    const {value, name} = event.target
+    setCriteria(prev => ({
+      ...prev,
+      [name]: value
+    }))
+  }
+
+  console.log(criteria)
+
   return (
-    <div className='max-w-4xl m-auto mt-10'>
-      <form className='border-b pb-4'>
-
-        <select 
-            name="" 
-            id="catagory"
-            className='border rounded-full px-2 py-1 text-xs focus:outline-none mr-4'
-        >
-            <option value="formal shirt">Formal Shirt</option>
-            <option value="casual shirt">Casual Shirt</option>
-            <option value="t-shirt">T-shirt</option>
-            <option value="hoddie">Hoddie</option>
-        </select>
-        <select 
-            name="" 
-            id="brand"
-            className='border rounded-full px-2 py-1 text-xs focus:outline-none mr-4'
-        >
-            <option value="louis vuitton">Louis Vuitton</option>
-            <option value="gucci">Gucci</option>
-            <option value="levis">Levi's</option>
-            <option value="easy">Easy</option>
-            <option value="chanel">Chanel</option>
-
-        </select>
-        <select 
+    <div>
+      <form className='border-b border-gray-600 pb-4 flex items-center '>
+        <CiFilter size={20} className='border border-gray-500 rounded-full opacity-90 h-7 w-10 p-1 mr-4'/>
+        <Category 
+          criteria={criteria}
+          handleChange={handleChange}
+        />
+        <Cuisine
+          criteria={criteria}
+          handleChange={handleChange}
+        />
+        {/* <select 
             name="" 
             id="price"
             className='border rounded-full px-2 py-1 text-xs focus:outline-none mr-4'
         >
-            <option value="low">0-100$</option>
-            <option value="mid">100-500$</option>
-            <option value="high">500-1000$</option>
-        </select>
-
-        <button
-            className='bg-gray-900 border text-white rounded-full px-8 py-2 text-xs focus:outline-none'
-        >Filter</button>
+            <option value="$10-$100">$10-$100</option>
+            <option value="mid">$101-$200</option>
+            <option value="high">$201-$300</option>
+        </select> */}
 
       </form>
       
